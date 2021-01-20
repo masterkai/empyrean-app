@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import {CssBaseline} from '@material-ui/core';
+import {ThemeProvider} from "@material-ui/styles";
+import '../src/App.scss'
+import theme from '../src/ui/Theme'
+import MainLayouts from '../src/layouts/MainLayouts'
+import Carousel from "./components/Carousel";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <MainLayouts>
+          <Carousel/>
+        </MainLayouts>
+      </ThemeProvider>
+    </>
 
-export default App;
+
+  )
+}
