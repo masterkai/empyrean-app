@@ -17,7 +17,7 @@ const data = [{src: '/images/banner01.png', alt: 'banner01'}, {
 SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
 const Carousel = () => {
-  const styles ={'width': '1920px', 'height': '860px'}
+  const styles ={'width': '100%', 'height': 'auto'}
   return (
     <Swiper
       loop={true}
@@ -31,21 +31,13 @@ const Carousel = () => {
       // onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
     >
-      {/*{data && data.map((x, index) => {*/}
-      {/*  return (*/}
-      {/*    <SwiperSlide key={index}>*/}
-      {/*      <img src={x.src} style={{'width': '1920px', 'height': '860px'}} alt={x.alt}/>*/}
-      {/*    </SwiperSlide>*/}
-      {/*  )*/}
-      {/*})}*/}
-
-      <SwiperSlide><img src='/images/banner01.png' style={styles} alt={data[0].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner02.jpg' style={styles} alt={data[1].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner03.jpg' style={styles} alt={data[2].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner04.jpg' style={styles} alt={data[3].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner05.jpg' style={styles} alt={data[4].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner06.jpg' style={styles} alt={data[5].alt}/></SwiperSlide>
-      <SwiperSlide><img src='/images/banner07.jpg' style={styles} alt={data[6].alt}/></SwiperSlide>
+      {data && data.map((x, index) => {
+        return (
+          <SwiperSlide key={index}>
+            <img src={x.src} style={styles} alt={x.alt}/>
+          </SwiperSlide>
+        )
+      })}
     </Swiper>
   );
 };
