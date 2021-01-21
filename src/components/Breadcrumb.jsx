@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
-import Link from 'next/link';
+import {Link} from 'react-router-dom';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function handleClick(event) {
-  event.preventDefault();
+  // event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
 
@@ -26,8 +26,8 @@ export default function CustomSeparator() {
     <div className={classes.root}>
 
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-        <Link color="inherit" href="/" onClick={handleClick}>
-          <a>首頁</a>
+        <Link to="/" onClick={handleClick}>
+          首頁
         </Link>
 
         <Typography color="textPrimary">最新消息</Typography>

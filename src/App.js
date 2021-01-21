@@ -1,6 +1,11 @@
 import * as React from 'react';
-import {CssBaseline, Container} from '@material-ui/core';
+import {CssBaseline} from '@material-ui/core';
 import {ThemeProvider} from "@material-ui/styles";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -9,33 +14,48 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import '../src/App.scss'
 import theme from '../src/ui/Theme'
 import MainLayouts from '../src/layouts/MainLayouts'
-import Carousel from "./components/Carousel";
-import KnowledgeAndApplicationSection from '../src/components/KnowledgeAndApplicationSection'
-import NewProductInfoSection from '../src/components/NewProductInfoSection'
-import NewsReleaseSection from "./components/NewsReleaseSection";
-import SubscribeNews from "./components/SubsCribeNews";
+import Home from "./components/Home";
+import NewsReleaseListPage from "./components/NewsReleaseListPage";
+import LatestNewsPage from "./components/LatestNewsPage";
+
+
 export default function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <MainLayouts>
-          <Carousel/>
-          <Container maxWidth="xl">
+      <Router>
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <MainLayouts>
+            <Switch>
+              <Route path="/" exact component={Home}>
+                <Home/>
+              </Route>
+              <Route path="/about">
+                <About/>
+              </Route>
+              <Route path="/users">
+                <Users/>
+              </Route>
+              <Route path="/latest-news" exact component={NewsReleaseListPage}>
+                <NewsReleaseListPage/>
+              </Route>
+              <Route path="/latest-news/:id" component={LatestNewsPage}>
+                <LatestNewsPage/>
+              </Route>
 
-            <KnowledgeAndApplicationSection/>
-
-            <NewProductInfoSection/>
-
-            <NewsReleaseSection/>
-
-            <SubscribeNews/>
-
-          </Container>
-        </MainLayouts>
-      </ThemeProvider>
+            </Switch>
+          </MainLayouts>
+        </ThemeProvider>
+      </Router>
     </>
-
-
   )
+}
+
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
 }

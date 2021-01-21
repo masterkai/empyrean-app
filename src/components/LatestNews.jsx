@@ -9,9 +9,6 @@ const columns = [
     renderHeader: () => (
       <strong>
         {'發佈日期 '}
-        {/*<span role="img" aria-label="enjoy">*/}
-        {/*  🎂*/}
-        {/*</span>*/}
       </strong>
     ),
   },
@@ -22,7 +19,6 @@ const columns = [
     renderHeader: () => (
       <strong>
         {'Title '}
-
       </strong>
     ),
   },

@@ -3,12 +3,13 @@ import {InputBase, AppBar, Toolbar, Menu, MenuItem} from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import logo from '../assets/empyrean-logo.svg'
-import Link from '@material-ui/core/Link'
+// import Link from '@material-ui/core/Link'
 import {UserIcon, SearchIcon} from '../icons/Icons'
 import grey from "@material-ui/core/colors/grey";
 import NestedMenu from "../components/NestedMenu";
 import SideMenu from '../ui/Drawer'
 import {TabsArr} from "../data/data";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    display:'none',
+    display: 'none',
     [theme.breakpoints.down('md')]: {
       display: 'block',
       marginRight: theme.spacing(1),
@@ -125,12 +126,12 @@ export default function SearchAppBar() {
           <div className='flexContainer'>
             <SideMenu/>
 
-            <Link href='/'>
+            <Link to='/'>
               <img className={classes.logo} src={logo} alt=""/>
             </Link>
           </div>
           <div className={classes.menuGroup}>
-            {TabsArr.map((x,index) => (<NestedMenu key={index} sub={x.sub} link={x.link} title={x.title}/>))}
+            {TabsArr.map((x, index) => (<NestedMenu key={index} sub={x.sub} link={x.link} title={x.title}/>))}
           </div>
           <div className={classes.flexGroup}>
             <div className={classes.search}>
