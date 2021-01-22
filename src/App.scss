@@ -126,3 +126,14 @@ ul.noStyleList {
   width: 100%;
   height: auto;
 }
+.newsListContainer {
+  border: 1px solid red;
+  .newsItem {
+    cursor: pointer;
+    padding: 20px;
+    border-bottom: 1px solid #cfcfcf;
+    a {
+      text-decoration: none;
+    }
+  }
+}

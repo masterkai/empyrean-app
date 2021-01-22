@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+import React, {useState, useEffect} from 'react';
+import {DataGrid} from '@material-ui/data-grid';
+import {Link} from 'react-router-dom'
 
 const columns = [
   {
@@ -21,31 +22,40 @@ const columns = [
         {'Title '}
       </strong>
     ),
+    renderCell: (params) => (
+      <strong>
+        <Link to='/'
+              style={{textDecoration: 'none'}}
+        >
+          {params.value}
+        </Link>
+      </strong>
+    ),
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    date: new Date(1979, 0, 1),
-    title: 'Suunto 7石墨灰 禮盒限量版 新品上市活動'
-  },
-  {
-    id: 2,
-    date: new Date(1984, 1, 1),
-    title: 'Suunto 7石墨灰 禮盒限量版 新品上市活動'
-  },
-  {
-    id: 3,
-    date: new Date(1992, 2, 1),
-    title: 'Suunto 7石墨灰 禮盒限量版 新品上市活動'
-  },
-];
+
 
 export default function LatestNews() {
+
+  const [rows, setRows] = useState([])
+
+  useEffect(() => {
+    fetchItems()
+  }, [])
+
+
+  const fetchItems = async () => {
+    const data = await fetch('https://fortnite-api.theapinetwork.com/store/get')
+
+    const results = await data.json()
+    // console.log(results.data[0].item);
+    setRows(results.data)
+  }
+
   return (
-    <div style={{ height: 300, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+    <div className='newsListContainer'>
+      {rows&&rows.length>0&&rows.map((x)=>(<div className='newsItem' key={x.itemId}><Link to={`/latest-news/${x.itemId}`}>{x.item.name}</Link></div>))}
     </div>
   );
 }

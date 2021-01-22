@@ -27,21 +27,16 @@ export default function App() {
           <CssBaseline/>
           <MainLayouts>
             <Switch>
-              <Route path="/" exact component={Home}>
-                <Home/>
-              </Route>
-              <Route path="/about">
-                <About/>
-              </Route>
-              <Route path="/users">
-                <Users/>
-              </Route>
-              <Route path="/latest-news" exact component={NewsReleaseListPage}>
-                <NewsReleaseListPage/>
-              </Route>
-              <Route path="/latest-news/:id" component={LatestNewsPage}>
-                <LatestNewsPage/>
-              </Route>
+              <Route path="/" exact component={Home}/>
+
+              <Route path="/about"/>
+
+              <Route path="/users"/>
+
+              <Route path="/latest-news" exact component={NewsReleaseListPage}/>
+
+              <Route path="/latest-news/:id" component={LatestNewsPage}/>
+
 
             </Switch>
           </MainLayouts>
